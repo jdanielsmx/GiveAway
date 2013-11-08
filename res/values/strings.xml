@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GiveAway</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_post_item">My Message</string>
+    <string name="title_activity_browse_items">BrowseItemsActivity</string>
+    <string name="PostItemBtnCaption">Post Item</string>
+    <string name="BrowseItemsBtnCaption">Browse Items</string>
+    <string name="BrowseImagesBtnCaption">Browse Images</string>
+    <string name="textViewImagePath">Image path</string>
+    <string name="ImageDesc">Image to be posted</string>
+
+</resources>
