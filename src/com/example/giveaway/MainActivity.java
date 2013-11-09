@@ -33,4 +33,9 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	
+	public void openBrowseItems(View view){
+		Intent intent = new Intent(this, BrowseItemsActivity.class);
+		startActivity(intent);
+	}
 }

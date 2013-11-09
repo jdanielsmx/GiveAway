@@ -25,12 +25,13 @@
         android:onClick="openPostItem"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnBrowseItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnLoadImage"
         android:layout_below="@+id/btnLoadImage"
         android:layout_marginTop="31dp"
+        android:onClick="openBrowseItems"
         android:text="@string/BrowseItemsBtnCaption" />
 
 </RelativeLayout>

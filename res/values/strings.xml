@@ -11,5 +11,7 @@
     <string name="BrowseImagesBtnCaption">Browse Images</string>
     <string name="textViewImagePath">Image path</string>
     <string name="ImageDesc">Image to be posted</string>
+    <string name="LeftCaption">&lt;</string>
+    <string name="RightCaption">&gt;</string>
 
 </resources>

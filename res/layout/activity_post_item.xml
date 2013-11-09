@@ -38,7 +38,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnLeft"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -49,8 +49,8 @@
         android:id="@+id/editTextEmail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/button1"
+        android:layout_above="@+id/btnLeft"
+        android:layout_alignLeft="@+id/btnLeft"
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textEmailAddress" />
