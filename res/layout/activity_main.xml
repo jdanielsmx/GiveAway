@@ -16,17 +16,17 @@
 
     <Button
         android:id="@+id/btnLoadImage"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewTargetImage"
         android:layout_below="@+id/textViewTargetImage"
         android:layout_marginTop="70dp"
-        android:text="@string/PostItemBtnCaption" 
-        android:onClick="openPostItem"/>
+        android:onClick="openPostItem"
+        android:text="@string/PostItemBtnCaption" />
 
     <Button
         android:id="@+id/btnBrowseItems"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnLoadImage"
         android:layout_below="@+id/btnLoadImage"

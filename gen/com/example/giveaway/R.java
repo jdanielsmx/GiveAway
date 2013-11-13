@@ -31,11 +31,11 @@ public final class R {
         public static final int btnRight=0x7f080001;
         public static final int editTextEmail=0x7f080009;
         public static final int editTextPhoneNumber=0x7f080008;
-        public static final int imageView1=0x7f080002;
         public static final int imageViewTargetImage=0x7f08000a;
+        public static final int ivPostedItem=0x7f080002;
         public static final int textViewTargetImage=0x7f080005;
-        public static final int textviewEmail=0x7f080004;
-        public static final int textviewPhone=0x7f080003;
+        public static final int textviewBrowseEmail=0x7f080004;
+        public static final int textviewBrowsePhone=0x7f080003;
     }
     public static final class layout {
         public static final int activity_browse_items=0x7f030000;

@@ -4,10 +4,10 @@
     <string name="app_name">GiveAway</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_post_item">My Message</string>
-    <string name="title_activity_browse_items">BrowseItemsActivity</string>
-    <string name="PostItemBtnCaption">Post Item</string>
-    <string name="BrowseItemsBtnCaption">Browse Items</string>
+    <string name="title_activity_post_item">Post an item</string>
+    <string name="title_activity_browse_items">Browse Items</string>
+    <string name="PostItemBtnCaption">Post</string>
+    <string name="BrowseItemsBtnCaption">Browse</string>
     <string name="BrowseImagesBtnCaption">Browse Images</string>
     <string name="textViewImagePath">Image path</string>
     <string name="ImageDesc">Image to be posted</string>

@@ -17,7 +17,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="14dp"
-        android:text="@string/LeftCaption" />
+        android:text="@string/LeftCaption" 
+        android:onClick="goLeft"/>
 
     <Button
         android:id="@+id/btnRight"
@@ -28,19 +29,20 @@
         android:layout_alignBottom="@+id/btnLeft"
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
-        android:text="@string/RightCaption" />
+        android:text="@string/RightCaption" 
+        android:onClick="goRight"/>
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/ivPostedItem"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/textviewBrowsePhone"
         android:layout_alignLeft="@+id/btnLeft"
         android:layout_alignParentTop="true"
-        android:src="@drawable/ic_launcher"
-        android:layout_above="@+id/textviewPhone"/>   
+        android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/textviewEmail"
+        android:id="@+id/textviewBrowseEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnLeft"
@@ -50,11 +52,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textviewPhone"
+        android:id="@+id/textviewBrowsePhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textviewEmail"
-        android:layout_alignLeft="@+id/textviewEmail"
+        android:layout_above="@+id/textviewBrowseEmail"
+        android:layout_alignLeft="@+id/textviewBrowseEmail"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
