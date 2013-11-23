@@ -38,19 +38,20 @@
     </EditText>
 
     <Button
-        android:id="@+id/btnLeft"
+        android:id="@+id/btnPost"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/btnLoadImage"
-        android:text="@string/PostItemBtnCaption" />
+        android:text="@string/PostItemBtnCaption" 
+        android:onClick="PostItem"/>
 
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btnLeft"
-        android:layout_alignLeft="@+id/btnLeft"
+        android:layout_above="@+id/btnPost"
+        android:layout_alignLeft="@+id/btnPost"
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textEmailAddress" />

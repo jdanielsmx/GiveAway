@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
@@ -28,6 +29,9 @@ public class PostItemActivity extends Activity {
 	ImageView targetImage;
 	MyLocation myLocation = new MyLocation();
 	Location currentLocation;
+	Bitmap bmpCurrentBitmap;
+	EditText edtextEmail;
+	EditText edtextPhone;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,9 @@ public class PostItemActivity extends Activity {
 		
 		//Button buttonLoadImage = (Button)findViewById(R.id.btnLoadImage);
 		textTargetUri = (TextView)findViewById(R.id.textViewTargetImage);
-		targetImage = (ImageView)findViewById(R.id.imageViewTargetImage);				
+		targetImage = (ImageView)findViewById(R.id.imageViewTargetImage);
+		edtextEmail = (EditText)findViewById(R.id.editTextEmail);
+		edtextPhone = (EditText)findViewById(R.id.editTextPhoneNumber);
 
 		// Show the Up button in the action bar.
 		setupActionBar();
@@ -113,14 +119,19 @@ public class PostItemActivity extends Activity {
 	    if (resultCode == RESULT_OK){
 	     Uri targetUri = data.getData();
 	     //textTargetUri.setText(targetUri.toString());
-	     Bitmap bitmap;
 	     try {
-	      bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
-	      targetImage.setImageBitmap(bitmap);
+	      bmpCurrentBitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(targetUri));
+	      targetImage.setImageBitmap(bmpCurrentBitmap);
 	     } catch (FileNotFoundException e) {
 	      // TODO Auto-generated catch block
 	      e.printStackTrace();
 	     }	         	    	
 	    }
-	 }	
+	 }
+	 
+	 public void PostItem(View view){		 
+		Item myItem = new Item(currentLocation.getLatitude(), currentLocation.getLongitude(), 
+				 edtextEmail.getText().toString(), edtextPhone.getText().toString(), bmpCurrentBitmap);
+		
+	 }
 }
