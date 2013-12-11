@@ -19,7 +19,7 @@
 package com.example.giveaway.posteditemendpoint.model;
 
 /**
- * Model definition for CollectionResponsePostedItem.
+ * Model definition for GeoPt.
  *
  * <p> This is the Java data model class that specifies how to parse/serialize into the JSON that is
  * transmitted over HTTP when working with the posteditemendpoint. For a detailed explanation see:
@@ -29,64 +29,58 @@ package com.example.giveaway.posteditemendpoint.model;
  * @author Google, Inc.
  */
 @SuppressWarnings("javadoc")
-public final class CollectionResponsePostedItem extends com.google.api.client.json.GenericJson {
+public final class GeoPt extends com.google.api.client.json.GenericJson {
 
   /**
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private java.util.List<PostedItem> items;
-
-  static {
-    // hack to force ProGuard to consider PostedItem used, since otherwise it would be stripped out
-    // see http://code.google.com/p/google-api-java-client/issues/detail?id=528
-    com.google.api.client.util.Data.nullOf(PostedItem.class);
-  }
+  private java.lang.Float latitude;
 
   /**
    * The value may be {@code null}.
    */
   @com.google.api.client.util.Key
-  private java.lang.String nextPageToken;
+  private java.lang.Float longitude;
 
   /**
    * @return value or {@code null} for none
    */
-  public java.util.List<PostedItem> getItems() {
-    return items;
+  public java.lang.Float getLatitude() {
+    return latitude;
   }
 
   /**
-   * @param items items or {@code null} for none
+   * @param latitude latitude or {@code null} for none
    */
-  public CollectionResponsePostedItem setItems(java.util.List<PostedItem> items) {
-    this.items = items;
+  public GeoPt setLatitude(java.lang.Float latitude) {
+    this.latitude = latitude;
     return this;
   }
 
   /**
    * @return value or {@code null} for none
    */
-  public java.lang.String getNextPageToken() {
-    return nextPageToken;
+  public java.lang.Float getLongitude() {
+    return longitude;
   }
 
   /**
-   * @param nextPageToken nextPageToken or {@code null} for none
+   * @param longitude longitude or {@code null} for none
    */
-  public CollectionResponsePostedItem setNextPageToken(java.lang.String nextPageToken) {
-    this.nextPageToken = nextPageToken;
+  public GeoPt setLongitude(java.lang.Float longitude) {
+    this.longitude = longitude;
     return this;
   }
 
   @Override
-  public CollectionResponsePostedItem set(String fieldName, Object value) {
-    return (CollectionResponsePostedItem) super.set(fieldName, value);
+  public GeoPt set(String fieldName, Object value) {
+    return (GeoPt) super.set(fieldName, value);
   }
 
   @Override
-  public CollectionResponsePostedItem clone() {
-    return (CollectionResponsePostedItem) super.clone();
+  public GeoPt clone() {
+    return (GeoPt) super.clone();
   }
 
 }

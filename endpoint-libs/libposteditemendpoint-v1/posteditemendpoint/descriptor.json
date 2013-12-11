@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/posteditemendpoint/v1/20131129021019/java/1.16.0-rc/example.com-posteditemendpoint-v1-20131129021019-java-1.16.0-rc-sources.jar", 
-      "path": "example.com-posteditemendpoint-v1-20131129021019-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/posteditemendpoint/v1/20131211071551/java/1.16.0-rc/example.com-posteditemendpoint-v1-20131211071551-java-1.16.0-rc-sources.jar", 
+      "path": "example.com-posteditemendpoint-v1-20131211071551-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-11-29 02:10"
+      "timestamp": "2013-12-11 07:15"
     }, 
     {
-      "path": "example.com-posteditemendpoint-v1-20131129021019-java-1.16.0-rc.jar.properties", 
+      "path": "example.com-posteditemendpoint-v1-20131211071551-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "giveaway", 
   "language_version": "1.16.0-rc", 
   "id": "posteditemendpoint:v1", 
-  "revision": 20131129021019
+  "revision": 20131211071551
 }

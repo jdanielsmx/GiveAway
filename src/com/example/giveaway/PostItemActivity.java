@@ -26,11 +26,11 @@ import android.widget.ImageView;
 import com.example.giveaway.MainActivity;
 import com.example.giveaway.MyLocation.LocationResult;
 import com.example.giveaway.posteditemendpoint.Posteditemendpoint;
+import com.example.giveaway.posteditemendpoint.model.GeoPt;
 import com.example.giveaway.posteditemendpoint.model.PostedItem;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.json.jackson.JacksonFactory;
 import com.google.api.client.util.DateTime;
-
 
 public class PostItemActivity extends Activity {
 
@@ -139,17 +139,25 @@ public class PostItemActivity extends Activity {
 	 }
 	 
 	 public void PostItem(View view){	
-		 /*
-		Item myItem = new Item(currentLocation.getLatitude(), currentLocation.getLongitude(), 
-				 edtextEmail.getText().toString(), edtextPhone.getText().toString(), bmpCurrentBitmap);
+		 
+		//Item myItem = new Item(currentLocation.getLatitude(), currentLocation.getLongitude(), 
+			//	 edtextEmail.getText().toString(), edtextPhone.getText().toString(), bmpCurrentBitmap);
 		
-		PostedItem pItem = new com.example.giveaway.posteditemendpoint.model.PostedItem();
-		pItem.setEmail(myItem.GetEmail());
+		//PostedItem pItem = new com.example.giveaway.posteditemendpoint.model.PostedItem();
+		/*pItem.setEmail(myItem.GetEmail());
 		pItem.setImageUrl("");
 		pItem.setLatitude(myItem.GetLatitude());
 		pItem.setLongitude(myItem.GetLongitude());
 		pItem.setPhone(myItem.GetPhone());
-		pItem.setPostingDate(new DateTime(new Date()));
+		pItem.setPostingDate(new DateTime(new Date()));*/
+		/*
+		pItem.setEmail("a@b.com");//myItem.GetEmail());
+		pItem.setImageUrl("myurl");
+		//pItem.setLatitude(5d);
+		//pItem.setLongitude(6d);
+		pItem.setPhone("1234567890");//myItem.GetPhone());
+		//pItem.setPostingDate(new DateTime(new Date()));		
+		
 		
 		Posteditemendpoint.Builder builder = new Posteditemendpoint.Builder(
 				AndroidHttp.newCompatibleTransport(), 
@@ -158,15 +166,15 @@ public class PostItemActivity extends Activity {
 		
 		builder = CloudEndpointUtils.updateBuilder(builder);
 		
-		Posteditemendpoint endpoint = builder.build();
-		try {
-			endpoint.insertPostedItem(pItem);
-			textTargetUri.setText("Hola mundo");
-		} catch (IOException e) {
+		Posteditemendpoint endpoint = builder.build();*/
+		//try {
+			//endpoint.insertPostedItem(pItem).execute();
+			//textTargetUri.setText("Hola mundo");
+		//} catch (Exception e) {//IOException
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			//textTargetUri.setText(e.toString());
-		}*/
+		//}
 		 
 		 new PostItemTask().execute();
 		 
@@ -191,12 +199,16 @@ public class PostItemActivity extends Activity {
 			//	 edtextEmail.getText().toString(), edtextPhone.getText().toString(), bmpCurrentBitmap);
 		
 		PostedItem pItem = new com.example.giveaway.posteditemendpoint.model.PostedItem();
+		GeoPt myPt = new com.example.giveaway.posteditemendpoint.model.GeoPt();
+		myPt.setLatitude((float)currentLocation.getLatitude());
+		myPt.setLongitude((float)currentLocation.getLongitude());
 		pItem.setEmail("a@b.com");//myItem.GetEmail());
 		pItem.setImageUrl("myurl");
-		pItem.setLatitude(5d);
-		pItem.setLongitude(6d);
+		pItem.setLocation(myPt);
+		//pItem.setLatitude(5d);
+		//pItem.setLongitude(6d);
 		pItem.setPhone("1234567890");//myItem.GetPhone());
-		//pItem.setPostingDate(new DateTime(new Date()));
+		pItem.setPostingDate(new DateTime(new Date()));
       
 		Posteditemendpoint.Builder builder = new Posteditemendpoint.Builder(
 				AndroidHttp.newCompatibleTransport(), 
@@ -209,15 +221,20 @@ public class PostItemActivity extends Activity {
 		
 		try {
 			endpoint.insertPostedItem(pItem).execute();
-			textTargetUri.setText("Hola mundo");
+			//textTargetUri.setText("Hola mundo");
 		} catch (Exception e) {//IOException
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			textTargetUri.setText(e.toString());
+			//textTargetUri.setText(e.toString());
 		}
 
       return null;
     }
+    
+    protected void onPostExecute(Void... params){
+    	    	
+    }
+    
   }	  
 	  
 }
