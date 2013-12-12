@@ -1,7 +1,13 @@
 package com.example.giveaway;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +18,7 @@ import com.example.giveaway.posteditemendpoint.model.CollectionResponsePostedIte
 import com.example.giveaway.posteditemendpoint.model.PostedItem;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.appengine.labs.repackaged.com.google.common.io.Resources;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,6 +48,7 @@ import android.provider.MediaStore.Images;
 public class BrowseItemsActivity extends Activity {
 	
 	private List<PostedItem> listpItems = null;
+	private Bitmap myBitmap;
 	ArrayList<String> myCameraImages;
 	int myIndex=0;
 	TextView tvEmail;
@@ -160,6 +168,9 @@ public class BrowseItemsActivity extends Activity {
 	public void goLeft(View view){
 		tvPhone.setText(listpItems.get(myIndex).getPhone());
 		tvEmail.setText(listpItems.get(myIndex).getEmail());
+		//LoadImageFromURL(listpItems.get(myIndex).getImageUrl());
+		new RetreiveImageTask().execute(listpItems.get(myIndex).getImageUrl());
+		//LoadTheImage();
 		if (myIndex==0)
 			myIndex = listpItems.size()-1;
 		else
@@ -169,12 +180,53 @@ public class BrowseItemsActivity extends Activity {
 	public void goRight(View view){
 		tvPhone.setText(listpItems.get(myIndex).getPhone());
 		tvEmail.setText(listpItems.get(myIndex).getEmail());
+		//LoadImageFromURL(listpItems.get(myIndex).getImageUrl());
+		new RetreiveImageTask().execute(listpItems.get(myIndex).getImageUrl());
+		//LoadTheImage();		
 		if (myIndex == (listpItems.size()-1))
 			myIndex = 0;
 		else
 			myIndex++;
 	}
 	
+	private void LoadTheImage(){
+		if (myBitmap != null){
+			ImageView i = (ImageView) findViewById(R.id.ivPostedItem);
+			i.setImageBitmap(myBitmap);
+		}
+	}
+
+	private void LoadImageFromURL(String imageUrl){
+		try {
+			  ImageView i = (ImageView) findViewById(R.id.ivPostedItem);
+			  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
+			  i.setImageBitmap(bitmap); 
+			} catch (MalformedURLException e) {
+			  e.printStackTrace();
+			} catch (IOException e) {
+			  e.printStackTrace();
+			}
+	}
+	
+	/*
+	private void LoadImageFromURL(String myUrl){
+		URL url = null;
+		try {
+			url = new URL(myUrl);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Bitmap bmp = null;
+		try {
+			bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    ImageView myImage = (ImageView) findViewById(R.id.ivPostedItem);
+	    myImage.setImageBitmap(bmp);
+	}*/
 	
 	public void LoadImage(String path){
 		File imgFile = new  File(path);
@@ -279,5 +331,30 @@ public class BrowseItemsActivity extends Activity {
 		    */
 		  }
 	
+	  class RetreiveImageTask extends AsyncTask<String, Void, Bitmap> {
+
+		    protected Bitmap doInBackground(String... urls) {
+				try {
+					  //ImageView i = (ImageView) findViewById(R.id.ivPostedItem);
+					  Bitmap bitmap = BitmapFactory.decodeStream((InputStream)new URL(urls[0]).getContent());
+					  return bitmap;
+					} catch (MalformedURLException e) {
+					  return null;
+					} catch (IOException e) {
+					  return null;
+					}
+		    }
+
+		    protected void onPostExecute(Bitmap returnedBitmap) {
+		        myBitmap = returnedBitmap;
+				ImageView i = (ImageView) findViewById(R.id.ivPostedItem);		        
+		        if (myBitmap != null){
+					i.setImageBitmap(myBitmap);					
+		        }
+		        else{
+		        	i.setImageResource(R.drawable.na_1);		        	
+		        }
+		    }
+		}
 	
 }
