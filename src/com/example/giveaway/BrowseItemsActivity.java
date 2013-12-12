@@ -1,9 +1,19 @@
 package com.example.giveaway;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.example.giveaway.posteditemendpoint.Posteditemendpoint;
+import com.example.giveaway.posteditemendpoint.model.CollectionResponsePostedItem;
+import com.example.giveaway.posteditemendpoint.model.PostedItem;
+import com.google.api.client.extensions.android.http.AndroidHttp;
+import com.google.api.client.json.jackson2.JacksonFactory;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.app.Activity;
@@ -15,6 +25,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
@@ -28,6 +40,7 @@ import android.provider.MediaStore.Images;
 
 public class BrowseItemsActivity extends Activity {
 	
+	private List<PostedItem> listpItems = null;
 	ArrayList<String> myCameraImages;
 	int myIndex=0;
 	TextView tvEmail;
@@ -56,7 +69,7 @@ public class BrowseItemsActivity extends Activity {
 
 		
 		
-		
+		new ListOfPostedItemsAsyncRetriever().execute();
 		
 		
 		
@@ -122,6 +135,7 @@ public class BrowseItemsActivity extends Activity {
 	    return result;
 	}	*/
 	
+	/*
 	public void goLeft(View view){
 		tvPhone.setText(String.valueOf(myIndex)); 
 		tvEmail.setText(myCameraImages.get(myIndex));
@@ -141,8 +155,27 @@ public class BrowseItemsActivity extends Activity {
 		else
 			myIndex++;
 	}
+	*/
 	
+	public void goLeft(View view){
+		tvPhone.setText(listpItems.get(myIndex).getPhone());
+		tvEmail.setText(listpItems.get(myIndex).getEmail());
+		if (myIndex==0)
+			myIndex = listpItems.size()-1;
+		else
+			myIndex--;
+	}
 
+	public void goRight(View view){
+		tvPhone.setText(listpItems.get(myIndex).getPhone());
+		tvEmail.setText(listpItems.get(myIndex).getEmail());
+		if (myIndex == (listpItems.size()-1))
+			myIndex = 0;
+		else
+			myIndex++;
+	}
+	
+	
 	public void LoadImage(String path){
 		File imgFile = new  File(path);
 		if(imgFile.exists()){
@@ -182,6 +215,69 @@ public class BrowseItemsActivity extends Activity {
 
 	    return result;
 
-	}	
+	}
+	
+	  private class ListOfPostedItemsAsyncRetriever extends AsyncTask<Void, Void, CollectionResponsePostedItem> {
+
+		    @Override
+		    protected CollectionResponsePostedItem doInBackground(Void... params) {
+
+
+		      //Placeendpoint.Builder endpointBuilder = new Placeendpoint.Builder(
+		        //  AndroidHttp.newCompatibleTransport(), new JacksonFactory(), null);
+		     
+		      Posteditemendpoint.Builder endpointBuilder = new Posteditemendpoint.Builder(
+		    		  AndroidHttp.newCompatibleTransport(), new JacksonFactory(), null);		     
+		      
+		      endpointBuilder = CloudEndpointUtils.updateBuilder(endpointBuilder);
+
+
+		      CollectionResponsePostedItem result;
+
+		      //Placeendpoint endpoint = endpointBuilder.build();
+		      Posteditemendpoint endpoint = endpointBuilder.build();
+
+		      try {
+		        //result = endpoint.listPlace().execute();
+		        result = endpoint.listPostedItem().execute();
+		      } catch (IOException e) {
+		        // TODO Auto-generated catch block
+		        e.printStackTrace();
+		        result = null;
+		      }
+		      return result;
+		    }
+
+		    @Override
+		    @SuppressWarnings("null")
+		    protected void onPostExecute(CollectionResponsePostedItem result) {
+		      //ListAdapter placesListAdapter = createPlaceListAdapter(result.getItems());
+		      //placesList.setAdapter(placesListAdapter);
+
+		      listpItems = result.getItems();
+		    }
+		   /* 
+		    private ListAdapter createPlaceListAdapter(List<Place> places) {
+		      final double kilometersInAMile = 1.60934;
+		      List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+		      for (Place place : places) {
+		        Map<String, Object> map = new HashMap<String, Object>();
+		        map.put("placeIcon", R.drawable.ic_launcher);
+		        map.put("placeName", place.getName());
+		        map.put("placeAddress", place.getAddress());
+		        String distance = "1.2";
+		        map.put("placeDistance", distance);
+		        data.add(map);
+		      }
+
+		      SimpleAdapter adapter = new SimpleAdapter(MainActivity.this, data, R.layout.place_item,
+		          new String[] {"placeIcon", "placeName", "placeAddress", "placeDistance"},
+		          new int[] {R.id.place_Icon, R.id.place_name, R.id.place_address, R.id.place_distance});
+
+		      return adapter;
+		    }
+		    */
+		  }
+	
 	
 }

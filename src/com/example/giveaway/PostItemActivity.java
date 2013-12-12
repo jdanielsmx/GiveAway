@@ -1,8 +1,6 @@
 package com.example.giveaway;
 
-
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Date;
 
 import android.os.AsyncTask;
@@ -180,6 +178,28 @@ public class PostItemActivity extends Activity {
 		 
 	 }
 	 
+	 /*
+	 private void X(){
+		 DefaultHttpClient http_client = new DefaultHttpClient();
+		 HttpGet http_get = new HttpGet(Config.BASE_URL + "bloburl");
+		 HttpResponse response = http_client.execute(http_get);
+		 BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+		 String first_line = reader.readLine();
+		 Log.w(TAG, "blob_url: " + first_line);
+
+		 HttpPost post = new HttpPost(first_line);
+		 http_client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+		 MultipartEntity entity = new MultipartEntity( HttpMultipartMode.BROWSER_COMPATIBLE );
+
+		 mime_type = "application/zip";
+		 File file = new File( context.getFilesDir(), filename );
+		 entity.addPart( "file", new FileBody( file, mime_type));
+		 post.setEntity( entity );
+
+		 String result = EntityUtils.toString( http_client.execute(post).getEntity(), "UTF-8");
+		 Log.i(TAG, result);
+	 }
+	 */
 	 
   /**
    * AsyncTask for calling Mobile Assistant API for posting an item
@@ -195,19 +215,19 @@ public class PostItemActivity extends Activity {
     protected Void doInBackground(Void... params) {
       
 
-		//Item myItem = new Item(currentLocation.getLatitude(), currentLocation.getLongitude(), 
-			//	 edtextEmail.getText().toString(), edtextPhone.getText().toString(), bmpCurrentBitmap);
+		Item myItem = new Item(currentLocation.getLatitude(), currentLocation.getLongitude(), 
+				 edtextEmail.getText().toString(), edtextPhone.getText().toString(), bmpCurrentBitmap);
 		
 		PostedItem pItem = new com.example.giveaway.posteditemendpoint.model.PostedItem();
 		GeoPt myPt = new com.example.giveaway.posteditemendpoint.model.GeoPt();
 		myPt.setLatitude((float)currentLocation.getLatitude());
 		myPt.setLongitude((float)currentLocation.getLongitude());
-		pItem.setEmail("a@b.com");//myItem.GetEmail());
+		pItem.setEmail(myItem.GetEmail());
 		pItem.setImageUrl("myurl");
 		pItem.setLocation(myPt);
 		//pItem.setLatitude(5d);
 		//pItem.setLongitude(6d);
-		pItem.setPhone("1234567890");//myItem.GetPhone());
+		pItem.setPhone(myItem.GetPhone());
 		pItem.setPostingDate(new DateTime(new Date()));
       
 		Posteditemendpoint.Builder builder = new Posteditemendpoint.Builder(
