@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
@@ -39,6 +40,7 @@ public class PostItemActivity extends Activity {
 	Bitmap bmpCurrentBitmap;
 	EditText edtextEmail;
 	EditText edtextPhone;
+	Button myPostButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +177,8 @@ public class PostItemActivity extends Activity {
 		//}
 		 
 		 new PostItemTask().execute();
-		 
+		 myPostButton = (Button)findViewById(R.id.btnPost);
+		 myPostButton.setEnabled(false);		 
 	 }
 	 
 	 /*
@@ -204,7 +207,7 @@ public class PostItemActivity extends Activity {
   /**
    * AsyncTask for calling Mobile Assistant API for posting an item
    */
-  private class PostItemTask extends AsyncTask<Void, Void, Void> {
+  private class PostItemTask extends AsyncTask<Void, Void, Long> {
 
     /**
      * Calls appropriate CloudEndpoint to indicate that user checked into a place.
@@ -212,7 +215,7 @@ public class PostItemActivity extends Activity {
      * @param params the place where the user is checking in.
      */
     @Override
-    protected Void doInBackground(Void... params) {
+    protected Long doInBackground(Void... params) {
       
 
 		Item myItem = new Item(currentLocation.getLatitude(), currentLocation.getLongitude(), 
@@ -246,13 +249,15 @@ public class PostItemActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			//textTargetUri.setText(e.toString());
+			return (long)0;
 		}
 
-      return null;
+      return (long) 1;
     }
     
-    protected void onPostExecute(Void... params){
-    	    	
+    protected void onPostExecute(Long result){
+		 myPostButton = (Button)findViewById(R.id.btnPost);
+		 myPostButton.setEnabled(true);    	    	
     }
     
   }	  

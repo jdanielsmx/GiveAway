@@ -30,6 +30,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -53,7 +54,10 @@ public class BrowseItemsActivity extends Activity {
 	int myIndex=0;
 	TextView tvEmail;
 	TextView tvPhone;
-			
+
+	Button myLeftButton;
+	Button myRightButton;
+	
 	/*
 	public static final String CAMERA_IMAGE_BUCKET_NAME =
 	        Environment.getExternalStorageDirectory().toString()
@@ -74,18 +78,19 @@ public class BrowseItemsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_browse_items);
-
-		
-		
+				
 		new ListOfPostedItemsAsyncRetriever().execute();
-		
-		
-		
+						
 		// Show the Up button in the action bar.
 		myCameraImages = getCameraImages(this);
 		tvEmail = (TextView)findViewById(R.id.textviewBrowseEmail);
 		tvPhone =(TextView)findViewById(R.id.textviewBrowsePhone);
 		setupActionBar();
+		
+		myLeftButton = (Button)findViewById(R.id.btnLeft);
+		myRightButton = (Button)findViewById(R.id.btnRight);
+		myLeftButton.setEnabled(false);
+		myRightButton.setEnabled(false);
 	}
 
 	/**
@@ -307,6 +312,10 @@ public class BrowseItemsActivity extends Activity {
 		      //placesList.setAdapter(placesListAdapter);
 
 		      listpItems = result.getItems();
+			myLeftButton = (Button)findViewById(R.id.btnLeft);
+			myRightButton = (Button)findViewById(R.id.btnRight);
+			myLeftButton.setEnabled(true);
+			myRightButton.setEnabled(true);		      
 		    }
 		   /* 
 		    private ListAdapter createPlaceListAdapter(List<Place> places) {
