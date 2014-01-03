@@ -115,6 +115,9 @@
 			<attribute name="javadoc_location" value="file:/Applications/eclipse/plugins/com.google.appengine.eclipse.sdkbundle_1.8.8/appengine-java-sdk-1.8.8/docs/javadoc/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="/Users/jdsandoval/Downloads/httpcomponents-client-4.3.1-bin/lib/httpmime-4.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/jdsandoval/Downloads/httpcomponents-client-4.3.1-bin/lib/httpclient-4.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="/Users/jdsandoval/Downloads/httpcomponents-client-4.3.1-bin/lib/httpcore-4.3.jar"/>
 	<classpathentry kind="src" path="endpoint-libs/libdeviceinfoendpoint-v1/deviceinfoendpoint/deviceinfoendpoint-v1-generated-source"/>
 	<classpathentry kind="src" path="endpoint-libs/libmessageEndpoint-v1/messageEndpoint/messageendpoint-v1-generated-source"/>
 	<classpathentry kind="src" path="endpoint-libs/libposteditemendpoint-v1/posteditemendpoint/posteditemendpoint-v1-generated-source"/>

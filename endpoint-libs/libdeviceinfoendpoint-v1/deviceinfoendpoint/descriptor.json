@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/deviceinfoendpoint/v1/20131211071539/java/1.16.0-rc/example.com-deviceinfoendpoint-v1-20131211071539-java-1.16.0-rc-sources.jar", 
-      "path": "example.com-deviceinfoendpoint-v1-20131211071539-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/deviceinfoendpoint/v1/20131214104312/java/1.16.0-rc/example.com-deviceinfoendpoint-v1-20131214104312-java-1.16.0-rc-sources.jar", 
+      "path": "example.com-deviceinfoendpoint-v1-20131214104312-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-12-11 07:15"
+      "timestamp": "2013-12-14 10:43"
     }, 
     {
-      "path": "example.com-deviceinfoendpoint-v1-20131211071539-java-1.16.0-rc.jar.properties", 
+      "path": "example.com-deviceinfoendpoint-v1-20131214104312-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "giveaway", 
   "language_version": "1.16.0-rc", 
   "id": "deviceinfoendpoint:v1", 
-  "revision": 20131211071539
+  "revision": 20131214104312
 }

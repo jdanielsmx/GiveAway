@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/messageEndpoint/v1/20131211071526/java/1.16.0-rc/example.com-messageEndpoint-v1-20131211071526-java-1.16.0-rc-sources.jar", 
-      "path": "example.com-messageEndpoint-v1-20131211071526-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/messageEndpoint/v1/20131214104257/java/1.16.0-rc/example.com-messageEndpoint-v1-20131214104257-java-1.16.0-rc-sources.jar", 
+      "path": "example.com-messageEndpoint-v1-20131214104257-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2013-12-11 07:15"
+      "timestamp": "2013-12-14 10:42"
     }, 
     {
-      "path": "example.com-messageEndpoint-v1-20131211071526-java-1.16.0-rc.jar.properties", 
+      "path": "example.com-messageEndpoint-v1-20131214104257-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "giveaway", 
   "language_version": "1.16.0-rc", 
   "id": "messageEndpoint:v1", 
-  "revision": 20131211071526
+  "revision": 20131214104257
 }
